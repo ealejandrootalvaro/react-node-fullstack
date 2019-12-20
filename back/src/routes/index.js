@@ -1,11 +1,11 @@
 import express from 'express';
+
 import makeLoginRoutes from './login';
-import postRoutes from './posts';
+import makeUserRoutes from './user-routes';
 
 const app = express();
 
 makeLoginRoutes(app);
-
-app.use('/posts', postRoutes);
+app.use("/users", makeUserRoutes(express));
 
 export default app;

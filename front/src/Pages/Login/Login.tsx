@@ -14,7 +14,6 @@ export default function Login() {
                 }}
                 onSubmit={(values, actions) => {
                     actions.setSubmitting(false);
-                    console.log(values);
                 }}
             >
                 {

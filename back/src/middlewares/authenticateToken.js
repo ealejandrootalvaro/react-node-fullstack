@@ -9,7 +9,6 @@ export default function makeAuthenticateToken(verifyToken) {
             if (err) {
                 return res.sendStatus(403);
             }
-            console.log("adding user", tokenBody);
             req.token = tokenBody;
             next();
         })
