@@ -1,7 +1,8 @@
 export default function makeAddUser( { usersDb, makeUser } ) {
+    console.log(usersDb);
     return function addUser({ user }) {
         const userEntity = makeUser(user);
-        const db = usersDb();
-        return db.insert(user);
+        console.log("userEntity", userEntity);
+        return usersDb.insert(userEntity);
     }
 }

@@ -1,5 +1,5 @@
-export function buildMakeUser() {
-    export function makeUser( {user} ) {
+export default function buildMakeUser() {
+    return function makeUser( user ) {
         return {
             ...user
         }
