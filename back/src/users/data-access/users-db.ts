@@ -1,6 +1,15 @@
 const TABLE_NAME = 'users';
 
-export default function makeUsersDb( { makeDb } ) {
+import { makeDbType } from '../../utils/knex/knex-wrapper';
+import { UserType } from '../entity/user-entity'
+
+export interface MakeUsersDbProps {
+    makeDb: () => makeDbType
+}
+
+export type MakeUsersDbType = typeof makeUsersDb;
+
+export default function makeUsersDb( { makeDb } : MakeUsersDbProps ) {
 
     return {
         findAll,
@@ -13,7 +22,7 @@ export default function makeUsersDb( { makeDb } ) {
         return users;
     }
 
-    async function insert({ username }) {
+    async function insert({ username }: UserType) {
         const db = makeDb();
         console.log("inser", username);
         await db(TABLE_NAME).insert( {username} );

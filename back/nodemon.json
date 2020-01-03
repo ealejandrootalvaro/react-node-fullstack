@@ -1,5 +1,9 @@
 {
     "exec": "npm run dev",
-    "watch": ["src/*","server.js"],
-    "ext": "js, html, css, json"
+    "execMap": {
+      "ts": "node --require ts-node/register"
+    },
+    "ignore": [".git", "node_modules/**/node_modules"],
+    "watch": ["src/*","server.ts"],
+    "ext": "js, html, css, json, ts"
   }
