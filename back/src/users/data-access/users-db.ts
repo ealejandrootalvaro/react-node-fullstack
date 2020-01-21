@@ -24,7 +24,6 @@ export default function makeUsersDb( { makeDb } : MakeUsersDbProps ) {
 
     async function insert({ username }: UserType) {
         const db = makeDb();
-        console.log("inser", username);
         await db(TABLE_NAME).insert( {username} );
     }
 

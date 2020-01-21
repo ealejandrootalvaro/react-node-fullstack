@@ -19,7 +19,6 @@ export default function makeAuthenticateToken({verifyToken}: MakeAuthenticateTok
             if (err) {
                 return res.sendStatus(403);
             }
-            console.log(tokenBody);
             //req.token = tokenBody;
             next();
         })

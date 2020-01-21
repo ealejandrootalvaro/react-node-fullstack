@@ -16,7 +16,6 @@ export default function makeUserRoutes(app: typeof express) {
     });
 
     route.post("/", async (req, _) => {
-        console.log("post users req", req.body);
         await addUser({user: req.body});
     });
 

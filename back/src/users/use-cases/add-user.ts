@@ -11,10 +11,8 @@ export interface AddUserProps {
 }
 
 export default function makeAddUser( { usersDb, makeUser } : MakeUserProps ) {
-    console.log(usersDb);
     return function addUser({ user } : AddUserProps) {
         const userEntity = makeUser(user);
-        console.log("userEntity", userEntity);
         return usersDb.insert(userEntity);
     }
 }

@@ -17,5 +17,5 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS3lsZSIsImlhdCI6MTU3NjcxODUyOH0.JEHb2Boph225a4ml6WMJCZfONn5EeOf6_l7SK9bC4XY
 
 {
-    "username": "prueba asdasd"
+    "username": "nuevo usuario"
 }
