@@ -1,7 +1,7 @@
-const TABLE_NAME = 'users';
-
 import { makeDbType } from '../../utils/knex/knex-wrapper';
 import { UserType } from '../entity/user-entity'
+
+const TABLE_NAME = 'users';
 
 export interface MakeUsersDbProps {
     makeDb: () => makeDbType

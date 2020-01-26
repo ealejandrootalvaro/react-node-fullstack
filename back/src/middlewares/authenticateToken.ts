@@ -15,7 +15,7 @@ export default function makeAuthenticateToken({verifyToken}: MakeAuthenticateTok
         if (token == null) {
             return res.sendStatus(401);
         }
-        verifyToken(token, (err: any, tokenBody: any) : Response | void => {
+        verifyToken(token, (err: any) : Response | void => {
             if (err) {
                 return res.sendStatus(403);
             }
