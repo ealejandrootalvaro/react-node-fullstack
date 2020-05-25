@@ -11,8 +11,9 @@ export interface addTeamProps {
 }
 
 export default function makeAddTeam({teamDb, makeTeam} : makeAddTeamProps) {
-    return function addTeam({team} : addTeamProps) {
+    return async function addTeam({team} : addTeamProps) {
         const teamEntity = makeTeam(team);
-        teamDb.insert(teamEntity);
+        const result = await teamDb.insert(teamEntity);
+        return result;
     }
 }

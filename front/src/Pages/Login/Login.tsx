@@ -13,6 +13,7 @@ export default function Login() {
                     password: ''
                 }}
                 onSubmit={(values, actions) => {
+                    console.log(values);
                     actions.setSubmitting(false);
                 }}
             >
@@ -21,7 +22,7 @@ export default function Login() {
                         handleSubmit,
                         isSubmitting
                     }) => (
-                            <form onSubmit={handleSubmit}>
+                            <form onSubmit={handleSubmit} style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
                                 <div>
                                     <TextField
                                         label="Nombre de usuario"

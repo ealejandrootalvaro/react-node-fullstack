@@ -16,8 +16,12 @@ export default function makeTeamRoutes(app: typeof express) {
         res.json(result);
     })
 
-    route.post("/", async (req, _) => {
-        await addTeam({team: req.body});
+    route.post("/", async (req, _, next) => {
+        try {
+            await addTeam({team: req.body});
+        } catch(e) {
+            next(e)
+        }
     })
 
     return route;
