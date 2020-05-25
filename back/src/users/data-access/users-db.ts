@@ -13,7 +13,8 @@ export default function makeUsersDb( { makeDb } : MakeUsersDbProps ) {
 
     return {
         findAll,
-        insert
+        insert,
+        getByUserName
     }
 
     async function findAll() {
@@ -25,6 +26,12 @@ export default function makeUsersDb( { makeDb } : MakeUsersDbProps ) {
     async function insert({ username }: UserType) {
         const db = makeDb();
         await db(TABLE_NAME).insert( {username} );
+    }
+
+    async function getByUserName({ username }: UserType) {
+        const db = makeDb();
+        const user = await db(TABLE_NAME).select('*').where("username", username);
+        return user; 
     }
 
 }
