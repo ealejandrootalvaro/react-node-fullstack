@@ -6,7 +6,7 @@ import makeTeamRoutes from './team-routes';
 
 const app = express();
 
-makeLoginRoutes(app);
+app.use("/login", makeLoginRoutes(express));
 app.use("/users", makeUserRoutes(express));
 app.use("/teams", makeTeamRoutes(express));
 

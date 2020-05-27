@@ -10,7 +10,7 @@ export interface MakeLoginProps {
 
 export default function makeLogin({signToken}: MakeLoginProps) {
     return async function login({username} : LoginProps) {
-        checkCredentials(username);
+        await checkCredentials(username);
         const token = { name: username }
         return signToken(token);
     }
