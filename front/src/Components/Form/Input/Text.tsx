@@ -17,6 +17,7 @@ export default function Text({label, name, type="text"} : IProps) {
             label={label}
             type={type}
             as={TextField}
+            fullWidth
         />
     );
 }

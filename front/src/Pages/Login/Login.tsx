@@ -4,24 +4,28 @@ import { Formik } from 'formik';
 import TextField from '../../Components/Form/Input/Text';
 import Password from '../../Components/Form/Input/Password';
 
-import { post, ApiResult } from '../../Api/http-request'; 
+import Button from '../../Components/Button';
+
+import { APIInstance } from '../../Api/http-request';
+
+import './login-style.css';
 
 
 export default function Login() {
     return (
-        <div>
+        <div className="login__container">
             <Formik
                 initialValues={{
                     username: '',
                     password: ''
                 }}
                 onSubmit={(values, actions) => {
-                    post<string, number>('/login', values).then(
+                    APIInstance.post<string, number>('/login', values).then(
                         data => {
                             if (typeof data.data.response === 'string') {
                                 alert(`Token: ${data.data.response}`);
                             } else {
-                                alert(`Error: ${data.data.response.description}`);  
+                                alert(`Error: ${data.data.response.description}`);
                             }
                         }
                     );
@@ -33,25 +37,32 @@ export default function Login() {
                         handleSubmit,
                         isSubmitting
                     }) => (
-                            <form onSubmit={handleSubmit} style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-                                <div>
-                                    <TextField
-                                        label="Nombre de usuario"
-                                        name="username"
-                                    />
+                            <form onSubmit={handleSubmit}>
+                                <div className="login__form">
+                                    <div className="login__form-input">
+                                        <TextField
+                                            label="Nombre de usuario"
+                                            name="username"
+                                        />
+                                    </div>
+                                    <div className="login__form-input">
+                                        <Password
+                                            label="Contraseña"
+                                            name="password"
+                                        />
+                                    </div>
+                                    <div className="login__form-submit">
+                                        <Button
+                                            type="submit"
+                                            disabled={isSubmitting}
+                                            color="primary"
+                                            variant="contained"
+                                        >
+                                            Submit Form
+                                    </Button>
+                                    </div>
+
                                 </div>
-                                <div>
-                                    <Password
-                                        label="Contraseña"
-                                        name="password"
-                                    />
-                                </div>
-                                <button
-                                    type="submit"
-                                    disabled={isSubmitting}
-                                >
-                                    Submit Form
-                                </button>
                             </form>
                         )
                 }

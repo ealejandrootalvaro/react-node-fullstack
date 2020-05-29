@@ -2,10 +2,6 @@ import axios, { AxiosInstance} from 'axios';
 
 const host = "http://localhost:3000";
 
-var instance = axios.create({
-    baseURL: host
-});
-
 export enum ApiResult {
     SUCCESS = "success",
     ERROR = "error"
@@ -21,28 +17,27 @@ interface IResponse<S, E> {
     response: S | ApiError<E>
 }
 
-export function get(url: string) {
-    return instance.get(url);
-}
-
-export function post<S,T>(url: string, body: any) {
-    return instance.post<IResponse<S,T>>(url, body);
-}
-
-
-export class APIService<S, E> {
+class APIService<S, E> {
     instance: AxiosInstance; 
-    constructor() {
+    constructor(host: string) {
         this.instance = axios.create({
             baseURL: host
         });
     }
 
     get<S,T>(url: string) {
-        return this.instance.get<S,T>(url);
+        return this.instance.get<IResponse<S,T>>(url);
     }
 
     post<S,T>(url: string, body: any) {
         return this.instance.post<IResponse<S,T>>(url, body);
     }
+
+    setAuthToken(token: string) {
+        this.instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+
 }
+
+export let APIInstance = new APIService(host);
+
